@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "common-types",
+  "packageManager": "yarn@3.2.1",
+  "version": "0.0.0",
+  "main": "index.d.ts"
+}

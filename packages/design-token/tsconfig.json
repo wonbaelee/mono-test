@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["common-types"]
+  },
+  "files": ["token.ts"]
+}

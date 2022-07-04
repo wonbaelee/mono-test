@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# TODO: commitlint가 pnp를 지원하지 않기때문에 다른 방안을 고민 해봐야함.

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "ESNext",
+    "target": "es5",
+    "sourceMap": true,
+    "jsx": "preserve",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "baseUrl": ".",
+    "lib": ["DOM", "DOM.Iterable", "ES2021"]
+  },
+  "exclude": ["node_modules"]
+}
