@@ -21,6 +21,7 @@
     "common-types": "workspace:*",
     "core-js": "^3.23.3",
     "css-loader": "^6.7.1",
+    "cssnano": "^5.1.12",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.14",

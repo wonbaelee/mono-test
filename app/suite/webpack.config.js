@@ -16,6 +16,7 @@ module.exports = {
   devtool: isDev ? 'cheap-module-source-map' : false,
   entry: rootResolve('src', 'index.tsx'),
   output: {
+    clean: true,
     path: rootResolve('build'),
     filename: isDev ? '[name].bundle.js' : '[name].[contenthash:8].js',
     chunkFilename: isDev ? '[name].bundle.chunk.js' : '[name].[contenthash:8].chunk.js',
@@ -79,7 +80,7 @@ module.exports = {
       template: rootResolve('public', 'index.html'),
       inject: 'body',
     }),
-    isDev && new ReactRefreshWebpackPlugin({}),
+    isDev && new ReactRefreshWebpackPlugin(),
     !isDev && new MiniCssExtractPlugin(),
   ].filter(Boolean),
 };
