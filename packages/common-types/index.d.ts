@@ -1,1 +1,1 @@
-/// <reference path="./helper.d.ts" />
+import './helper';

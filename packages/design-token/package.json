@@ -1,5 +1,10 @@
 {
   "private": true,
   "name": "design-token",
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "main": "lib/token/index.ts",
+  "dependencies": {
+    "common-types": "workspace:*",
+    "tailwindcss": "^3.1.4"
+  }
 }
