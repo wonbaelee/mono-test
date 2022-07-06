@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "packageManager": "yarn@3.2.1",
+  "name": "base-component",
+  "main": "./lib/index.ts",
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "react-is": "^18.2.0",
+    "styled-components": "^5.3.5",
+    "twin.macro": "^2.8.2",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

@@ -1,5 +1,7 @@
+import { BaseButton } from 'base-component';
+
 const App = () => {
-  return <div>hello</div>;
+  return <BaseButton>hello</BaseButton>;
 };
 
 export default App;

@@ -11,7 +11,7 @@
 #.pnp.*
 
 # build directory
-/build
+build/
 
 # misc
 .DS_Store

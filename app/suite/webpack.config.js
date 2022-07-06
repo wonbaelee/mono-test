@@ -1,14 +1,24 @@
 const { resolve } = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const rootResolve = (...paths) => resolve(__dirname, ...paths);
 
+const isDev = process.env.NODE_ENV !== 'production';
+
+process.env.NODE_ENV = isDev ? 'development' : 'production';
+process.env.BABEL_ENV = isDev ? 'development' : 'production';
+
 module.exports = {
-  mode: 'development',
-  entry: './src/index.tsx',
+  mode: isDev ? 'development' : 'production',
+  devtool: isDev ? 'cheap-module-source-map' : false,
+  entry: rootResolve('src', 'index.tsx'),
   output: {
     path: rootResolve('build'),
-    filename: '[name].bundle.js',
+    filename: isDev ? '[name].bundle.js' : '[name].[contenthash:8].js',
+    chunkFilename: isDev ? '[name].bundle.chunk.js' : '[name].[contenthash:8].chunk.js',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
@@ -36,18 +46,40 @@ module.exports = {
             ],
             '@babel/preset-typescript',
           ],
+          plugins: ['macros', isDev && 'react-refresh/babel'].filter(Boolean),
         },
       },
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
       },
     ],
   },
+  devServer: {
+    hot: true,
+  },
+  optimization: {
+    minimize: !isDev,
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+      }),
+    ],
+  },
+  performance: isDev
+    ? false
+    : {
+        // 500KB
+        maxAssetSize: 1000 * 500,
+        maxEntrypointSize: 1000 * 500,
+      },
   plugins: [
     new HTMLWebpackPlugin({
       template: rootResolve('public', 'index.html'),
+      inject: 'body',
     }),
-  ],
+    isDev && new ReactRefreshWebpackPlugin({}),
+    !isDev && new MiniCssExtractPlugin(),
+  ].filter(Boolean),
 };
